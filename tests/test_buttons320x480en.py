@@ -19,3 +19,18 @@ def processCheck(samplesnap: str, actions: list[Action]):
 
 def test_mainScreen1() -> None:
     processCheck('mainScreen1.png', [Action.MAIN_BATTLE])
+
+def test_googlePlay1() -> None:
+    processCheck('googlePlay1.png', [Action.CLOSE_GOOGLE_PLAY])
+
+def test_googlePlay2() -> None:
+    processCheck('googlePlay2.png', [Action.CLOSE_GOOGLE_PLAY])
+
+def test_levelBattle1() -> None:
+    processCheck('levelBattle1.png', [Action.LEVEL_START_BATTLE])
+
+def test_nextLevel1() -> None:
+    processCheck('nextLevel1.png', [Action.NEXT_LEVEL])
+
+def test_defeatLevel1() -> None:
+    processCheck('defeatLevel1.png', [Action.DEFEAT_NEXT_LEVEL])

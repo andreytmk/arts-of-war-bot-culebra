@@ -9,18 +9,34 @@ from com.dtmilano.android.adb.adbclient import AdbClient
 
 from aofrestarter import AofRestarter
 
-class TestAofRestarter:
+def test_RestartAof_pause() -> None:
     adbClientMoc = create_autospec(AdbClient)
-    adbClientMoc.shell.return_value = None
+    AofRestarter.RESTART_TIMEDELTA = timedelta(milliseconds = 100)
+    AofRestarter.RESTART_SLEEP_SECONDS = 0
+    aofRestarter = AofRestarter(adbClientMoc)
+    assert aofRestarter.RestartAof()
+    assert not aofRestarter.RestartAof()
+    assert not aofRestarter.RestartAof()
+    time.sleep(0.1)
+    assert aofRestarter.RestartAof()
+    assert not aofRestarter.RestartAof()
+    assert not aofRestarter.RestartAof()
 
-    def test_RestartAof_pause(self) -> None:
-        AofRestarter.RESTART_TIMEDELTA = timedelta(milliseconds = 100)
-        AofRestarter.RESTART_SLEEP_SECONDS = 0
-        aofRestarter = AofRestarter(TestAofRestarter.adbClientMoc)
-        assert aofRestarter.RestartAof()
-        assert not aofRestarter.RestartAof()
-        assert not aofRestarter.RestartAof()
-        time.sleep(0.1)
-        assert aofRestarter.RestartAof()
-        assert not aofRestarter.RestartAof()
-        assert not aofRestarter.RestartAof()
+def test_RestartAof_StartAof() -> None:
+    adbClientMoc = create_autospec(AdbClient)
+    aofRestarter = AofRestarter(adbClientMoc)
+    assert aofRestarter.StartAof()
+    assert not aofRestarter.StartAof()
+    assert not aofRestarter.StartAof()
+    assert adbClientMoc.startActivity.call_count == 1
+
+def test_RestartAof_StopAof() -> None:
+    adbClientMoc = create_autospec(AdbClient)
+    aofRestarter = AofRestarter(adbClientMoc)
+    assert not aofRestarter.StopAof()
+    assert aofRestarter.StartAof()
+    assert aofRestarter.StopAof()
+    assert not aofRestarter.StopAof()
+    assert not aofRestarter.StopAof()
+    assert adbClientMoc.startActivity.call_count == 1
+    assert adbClientMoc.shell.call_count == 1

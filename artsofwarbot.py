@@ -3,11 +3,12 @@
 
 from com.dtmilano.android.adb.adbclient import AdbClient
 from com.dtmilano.android.viewclient import ViewClient
+from aofrestarter import AofRestarter
 
 from botbase import Button
 from buttons320x480en import LoadButtons
 from unknownsnapssaver import UnknownSnapsSaver
-from scenario import SCENARIO_BASE
+from scenario import COMMON_ACTIONS, SCENARIO_BASE, Action
 from PIL import Image
 
 import os
@@ -35,21 +36,29 @@ logging.basicConfig(
 
 logging.info("Starting ARTS OF WAR bot")
 
-def checkButton(device: AdbClient, snap: Image, button: Button) -> None:
+def checkButton(snap: Image, button: Button) -> bool:
     snapButton = snap.crop((button.x, button.y, button.x + button.width, button.y + button.height))
     snapSame = AdbClient.sameAs(snapButton, button.img, 0.9)
     if snapSame:
-        touchX = random.randint(button.x + TOUCH_PADDING, button.x + button.width - TOUCH_PADDING)
-        touchY = random.randint(button.y + TOUCH_PADDING, button.y + button.height - TOUCH_PADDING)
-        sleepSeconds = random.randint(1, 10) / 10.0
-        logging.debug("touch -> image: %s; x: %d; y: %d; sleepSeconds: %f"
-                     % (button.imgfile, touchX, touchX, sleepSeconds))
-        time.sleep(sleepSeconds)
-        device.touch(touchX, touchY, eventType=AdbClient.DOWN_AND_UP)
         return True
     return False
 
-def processLoopAction(device: AdbClient, buttons: Button, unknownSnapsSaver: UnknownSnapsSaver) -> None:
+def processButtonClick(device: AdbClient, button: Button) -> None:
+    touchX = random.randint(button.x + TOUCH_PADDING, button.x + button.width - TOUCH_PADDING)
+    touchY = random.randint(button.y + TOUCH_PADDING, button.y + button.height - TOUCH_PADDING)
+    sleepSeconds = random.randint(1, 10) / 10.0
+    logging.debug("touch -> action: %d; x: %d; y: %d; sleepSeconds: %f"
+                    % (button.action, touchX, touchX, sleepSeconds))
+    time.sleep(sleepSeconds)
+    device.touch(touchX, touchY, eventType=AdbClient.DOWN_AND_UP)
+
+def processLoopAction(
+        device: AdbClient,
+        buttons: Button,
+        unknownSnapsSaver: UnknownSnapsSaver,
+        aofRestarter: AofRestarter
+        ) -> None:
+
     snap = device.takeSnapshot(reconnect=True)
     currentDT = datetime.utcnow()
     currentTime = currentDT.time()
@@ -61,11 +70,21 @@ def processLoopAction(device: AdbClient, buttons: Button, unknownSnapsSaver: Unk
                 availableActions.add(action)
 
     if len(availableActions) == 0:
+        aofRestarter.StopAof()
         return
+
+    aofRestarter.StartAof()
+
+    for button in buttons:
+        if button.action in COMMON_ACTIONS:
+            if checkButton(snap, button):
+                processButtonClick(device, button)
+                return
 
     for button in buttons:
         if button.action in availableActions:
-            if checkButton(device, snap, button):
+            if checkButton(snap, button):
+                processButtonClick(device, button)
                 return
     
     unknownSnapsSaver.ProcessUnknownSnap(snap)
@@ -79,14 +98,15 @@ def getSnapshot(device: AdbClient) -> None:
 def runLoop(infinite: bool) -> None:
     (device, serialno) = ViewClient.connectToDeviceOrExit(**DEVICE_ARGS)
     buttons = LoadButtons()
-    unknownSnapsSaver = UnknownSnapsSaver(device)
+    unknownSnapsSaver = UnknownSnapsSaver()
+    aofRestarter = AofRestarter(device)
 
     if infinite:
         while True:
-            processLoopAction(device, buttons, unknownSnapsSaver)
+            processLoopAction(device, buttons, unknownSnapsSaver, aofRestarter)
             time.sleep(LOOP_SECONDS)
     else:
-        processLoopAction(device, buttons, unknownSnapsSaver)
+        processLoopAction(device, buttons, unknownSnapsSaver, aofRestarter)
 
 def printHelp() -> None:
     print("Available commands:")
