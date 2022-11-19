@@ -30,17 +30,6 @@ class Button:
         s += "action: %s, " % self.action
         return s
 
-class TestSnapshot:
-    def __init__(self):
-        self.testsnap = None
-        self.actions = []
-        self.snap = None
-
-    def setData(self, testsnap, actions):
-        self.testsnap = testsnap
-        self.actions = actions
-        return self
-
 class ScenarioActions:
     def __init__(self):
         self.fromTime = None

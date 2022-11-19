@@ -15,20 +15,26 @@ class UnknownSnapsSaver:
     SNAPS_MIN_TIMEDELTA = timedelta(minutes = 5)
     MAX_UNKNOWN_SNAPS_COUNT = 6
 
-    def __init__(self, device: AdbClient) -> None:
-        self.device = device
+    def __init__(self) -> None:
         self.unknownSnapsCount = 0
         self.lastUnknownSnapDT = datetime.utcnow()
 
-    def ProcessUnknownSnap(self, snap: Image) -> None:
+    def ProcessUnknownSnap(self, snap: Image.Image) -> bool:
         if self.unknownSnapsCount >= UnknownSnapsSaver.MAX_UNKNOWN_SNAPS_COUNT:
-            return
+            return False
         
         currentDT = datetime.utcnow()
         if currentDT - self.lastUnknownSnapDT < UnknownSnapsSaver.SNAPS_MIN_TIMEDELTA:
-            return
+            return False
 
         logging.info("unknown screen snap")
         dtStr = datetime.now().strftime("%Y%m%d%H%M%S")
         screenFileName = os.path.join(SCRIPT_PATH, "logs/unknown-%s.png") % dtStr
-        snap.writeToFile(screenFileName,'png')
+        snap.save(screenFileName,'png')
+        self.lastUnknownSnapDT = currentDT
+        self.unknownSnapsCount += 1
+        return True
+
+    def ResetSnapSaver(self):
+        self.unknownSnapsCount = 0
+        self.lastUnknownSnapDT = datetime.utcnow()
