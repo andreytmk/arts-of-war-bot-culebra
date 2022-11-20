@@ -18,7 +18,10 @@ def processCheck(samplesnap: str, actions: list[Action]):
     checkSampleSnapshot(sampleSnap, BUTTONS)
 
 def test_mainScreen1() -> None:
-    processCheck('mainScreen1.png', [Action.MAIN_BATTLE])
+    processCheck('mainScreen1.png', [Action.MAIN_BATTLE, Action.TERRITORY])
+
+def test_mainScreen2() -> None:
+    processCheck('mainScreen2.png', [Action.MAIN_BATTLE, Action.TERRITORY])
 
 def test_googlePlay1() -> None:
     processCheck('googlePlay1.png', [Action.CLOSE_GOOGLE_PLAY])
@@ -34,3 +37,42 @@ def test_nextLevel1() -> None:
 
 def test_defeatLevel1() -> None:
     processCheck('defeatLevel1.png', [Action.DEFEAT_NEXT_LEVEL])
+
+def test_territoryScreen1() -> None:
+    processCheck('territoryScreen1.png', [Action.HEADHUNT])
+
+def test_territoryScreen2() -> None:
+    processCheck('territoryScreen2.png', [Action.HEADHUNT])
+
+def test_headhuntScreen1() -> None:
+    processCheck('headhuntScreen1.png', [Action.TREASURE_EASY_ATTACK, Action.TREASURE_HARD_ATTACK, Action.INFINITY_ATTACK])
+
+def test_headhuntEasy1() -> None:
+    processCheck('headhuntEasy1.png', [Action.FIGHT])
+
+def test_headhuntWin1() -> None:
+    processCheck('headhuntWin1.png', [Action.HEADHUNT_NEXT])
+
+def test_headhuntHard1() -> None:
+    processCheck('headhuntHard1.png', [Action.FIGHT])
+
+def test_headhuntWin2() -> None:
+    processCheck('headhuntWin2.png', [Action.HEADHUNT_NEXT])
+
+def test_infinityMenu1() -> None:
+    processCheck('infinityMenu1.png', [Action.INFINITY_MENU_ATTACK])
+
+def test_infinityMenu2() -> None:
+    processCheck('infinityMenu2.png', [Action.INFINITY_MENU_ATTACK])
+
+def test_infinityMenu3() -> None:
+    processCheck('infinityMenu3.png', [Action.INFINITY_MENU_ATTACK])
+
+def test_infinityMenu4() -> None:
+    processCheck('infinityMenu4.png', [])
+
+def test_infinityBattle1() -> None:
+    processCheck('infinityBattle1.png', [Action.FIGHT])
+
+def test_infinityNext1() -> None:
+    processCheck('infinityNext1.png', [Action.INFINITY_NEXT])

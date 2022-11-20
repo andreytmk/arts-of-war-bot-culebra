@@ -38,3 +38,6 @@ class UnknownSnapsSaver:
     def ResetSnapSaver(self):
         self.unknownSnapsCount = 0
         self.lastUnknownSnapDT = datetime.utcnow()
+
+    def ResetLastUnknownSnapDT(self):
+        self.lastUnknownSnapDT = datetime.utcnow()

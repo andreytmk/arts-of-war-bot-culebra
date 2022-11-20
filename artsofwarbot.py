@@ -32,7 +32,7 @@ logging.basicConfig(
     filemode='a',
     format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
     datefmt='%H:%M:%S',
-    level=logging.DEBUG)
+    level=logging.INFO)
 
 logging.info("Starting ARTS OF WAR bot")
 
@@ -79,12 +79,14 @@ def processLoopAction(
         if button.action in COMMON_ACTIONS:
             if checkButton(snap, button):
                 processButtonClick(device, button)
+                unknownSnapsSaver.ResetLastUnknownSnapDT()
                 return
 
     for button in buttons:
         if button.action in availableActions:
             if checkButton(snap, button):
                 processButtonClick(device, button)
+                unknownSnapsSaver.ResetLastUnknownSnapDT()
                 return
     
     unknownSnapsSaver.ProcessUnknownSnap(snap)
