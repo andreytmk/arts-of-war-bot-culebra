@@ -7,6 +7,7 @@ from unittest.mock import create_autospec
 from unknownsnapssaver import UnknownSnapsSaver
 from PIL import Image
 
+
 def test_UnknownSnapsSaver():
     UnknownSnapsSaver.MAX_UNKNOWN_SNAPS_COUNT = 2
     UnknownSnapsSaver.SNAPS_MIN_TIMEDELTA = timedelta(milliseconds=100)

@@ -5,6 +5,7 @@ from botbase import ScenarioActions
 
 from datetime import time
 
+
 class Action:
     MAIN_BATTLE = 1
     CLOSE_GOOGLE_PLAY = 2
@@ -21,6 +22,7 @@ class Action:
     INFINITY_MENU_ATTACK = 13
     INFINITY_NEXT = 14
     RETRY_CONNECTION = 15
+
 
 COMMON_ACTIONS = [
     Action.CLOSE_GOOGLE_PLAY,
@@ -46,8 +48,12 @@ HEADHUNT_ACTIONS = [
 # All time in UTC
 SCENARIO_BASE = [
     # Headhunt
-    ScenarioActions().setData(time(hour=00, minute=1, second=00), time(hour=00, minute=15, second=00), HEADHUNT_ACTIONS),
+    ScenarioActions().setData(time(hour=00, minute=1, second=00),
+                              time(hour=00, minute=15, second=00),
+                              HEADHUNT_ACTIONS),
 
     # Levels
-    ScenarioActions().setData(time(hour=00, minute=20, second=00), time(hour=23, minute=00, second=00), LEVELS_ACTIONS),
+    ScenarioActions().setData(time(hour=00, minute=20, second=00),
+                              time(hour=23, minute=00, second=00),
+                              LEVELS_ACTIONS),
 ]

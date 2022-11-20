@@ -30,6 +30,7 @@ class Button:
         s += "action: %s, " % self.action
         return s
 
+
 class ScenarioActions:
     def __init__(self):
         self.fromTime = None

@@ -3,15 +3,16 @@
 
 from datetime import timedelta
 import time
-from unittest.mock import Mock, create_autospec
+from unittest.mock import create_autospec
 
 from com.dtmilano.android.adb.adbclient import AdbClient
 
 from aofrestarter import AofRestarter
 
+
 def test_RestartAof_pause() -> None:
     adbClientMoc = create_autospec(AdbClient)
-    AofRestarter.RESTART_TIMEDELTA = timedelta(milliseconds = 100)
+    AofRestarter.RESTART_TIMEDELTA = timedelta(milliseconds=100)
     AofRestarter.RESTART_SLEEP_SECONDS = 0
     aofRestarter = AofRestarter(adbClientMoc)
     assert aofRestarter.RestartAof()
@@ -22,6 +23,7 @@ def test_RestartAof_pause() -> None:
     assert not aofRestarter.RestartAof()
     assert not aofRestarter.RestartAof()
 
+
 def test_RestartAof_StartAof() -> None:
     adbClientMoc = create_autospec(AdbClient)
     aofRestarter = AofRestarter(adbClientMoc)
@@ -29,6 +31,7 @@ def test_RestartAof_StartAof() -> None:
     assert not aofRestarter.StartAof()
     assert not aofRestarter.StartAof()
     assert adbClientMoc.startActivity.call_count == 1
+
 
 def test_RestartAof_StopAof() -> None:
     adbClientMoc = create_autospec(AdbClient)
