@@ -76,3 +76,6 @@ def test_infinityBattle1() -> None:
 
 def test_infinityNext1() -> None:
     processCheck('infinityNext1.png', [Action.INFINITY_NEXT])
+
+def test_retryScreen1() -> None:
+    processCheck('retryScreen1.png', [Action.RETRY_CONNECTION])

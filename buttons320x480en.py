@@ -25,6 +25,7 @@ BUTTONS320x480EN = [
     Button().setData(181 ,295 ,43  ,24  ,'headhuntNext.png'       ,Action.HEADHUNT_NEXT          ),
     Button().setData(160 ,440 ,22  ,23  ,'infinityMenuAttack.png' ,Action.INFINITY_MENU_ATTACK   ),
     Button().setData(138 ,295 ,45  ,25  ,'infinityNext.png'       ,Action.INFINITY_NEXT          ),
+    Button().setData(134 ,294 ,57  ,21  ,'retryConnection.png'    ,Action.RETRY_CONNECTION       ),
 ]
 
 def LoadButtons():
