@@ -28,7 +28,6 @@ DEVICE_ARGS = {
     }
 
 SCRIPT_PATH = os.path.dirname(os.path.realpath(__file__))
-
 buttons = LoadButtons()
 
 logging.basicConfig(
@@ -105,6 +104,9 @@ def processLoopAction(
                 return
 
     unknownSnapsSaver.ProcessUnknownSnap(snap)
+    if unknownSnapsSaver.IsUnknownLimitReached():
+        if aofRestarter.RestartAof():
+            unknownSnapsSaver.ResetSnapSaver()
 
 
 def getSnapshot(device: AdbClient) -> None:

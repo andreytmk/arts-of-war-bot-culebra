@@ -20,11 +20,27 @@ def processCheck(samplesnap: str, actions: list[Action]):
 
 
 def test_mainScreen1() -> None:
-    processCheck('mainScreen1.png', [Action.MAIN_BATTLE, Action.TERRITORY])
+    processCheck('mainScreen1.png', [Action.MAIN_BATTLE,
+                                     Action.TERRITORY,
+                                     Action.STASH_REWARD])
 
 
 def test_mainScreen2() -> None:
-    processCheck('mainScreen2.png', [Action.MAIN_BATTLE, Action.TERRITORY])
+    processCheck('mainScreen2.png', [Action.MAIN_BATTLE,
+                                     Action.TERRITORY,
+                                     Action.STASH_REWARD])
+
+
+def test_mainScreen3() -> None:
+    processCheck('mainScreen3.png', [Action.MAIN_BATTLE,
+                                     Action.TERRITORY,
+                                     Action.STASH_REWARD])
+
+
+def test_mainScreen4() -> None:
+    processCheck('mainScreen4.png', [Action.MAIN_BATTLE,
+                                     Action.TERRITORY,
+                                     Action.STASH_REWARD])
 
 
 def test_googlePlay1() -> None:
@@ -33,6 +49,10 @@ def test_googlePlay1() -> None:
 
 def test_googlePlay2() -> None:
     processCheck('googlePlay2.png', [Action.CLOSE_GOOGLE_PLAY])
+
+
+def test_googlePlay3() -> None:
+    processCheck('googlePlay3.png', [Action.CLOSE_GOOGLE_PLAY])
 
 
 def test_levelBattle1() -> None:
@@ -48,11 +68,18 @@ def test_defeatLevel1() -> None:
 
 
 def test_territoryScreen1() -> None:
-    processCheck('territoryScreen1.png', [Action.HEADHUNT])
+    processCheck('territoryScreen1.png', [Action.HEADHUNT,
+                                          Action.HONOR_HUNTING])
 
 
 def test_territoryScreen2() -> None:
-    processCheck('territoryScreen2.png', [Action.HEADHUNT])
+    processCheck('territoryScreen2.png', [Action.HEADHUNT,
+                                          Action.HONOR_HUNTING])
+
+
+def test_territoryScreen3() -> None:
+    processCheck('territoryScreen3.png', [Action.HEADHUNT,
+                                          Action.HONOR_HUNTING])
 
 
 def test_headhuntScreen1() -> None:
@@ -103,3 +130,27 @@ def test_infinityNext1() -> None:
 
 def test_retryScreen1() -> None:
     processCheck('retryScreen1.png', [Action.RETRY_CONNECTION])
+
+
+def test_revardCollect1() -> None:
+    processCheck('revardCollect1.png', [Action.REVARD_COLLECT])
+
+
+def test_adsScreen1() -> None:
+    processCheck('adsScreen1.png', [Action.ADS_CLOSE1])
+
+
+def test_adsScreen2() -> None:
+    processCheck('adsScreen2.png', [Action.ADS_CLOSE1])
+
+
+def test_honorIceDragonMenu1() -> None:
+    processCheck('honorIceDragonMenu1.png', [Action.HONOR_CHALLENGE1])
+
+
+def test_honorIceDragonFight1() -> None:
+    processCheck('honorIceDragonFight1.png', [Action.FIGHT])
+
+
+def test_honorIceDragonComplete1() -> None:
+    processCheck('honorIceDragonComplete1.png', [Action.HONOR_NEXT1])

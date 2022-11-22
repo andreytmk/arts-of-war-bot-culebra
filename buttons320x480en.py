@@ -11,6 +11,10 @@ import os
 BUTTONS320x480EN_PATH = 'buttons320x480en'
 
 BUTTONS320x480EN = [
+    Button().setData(89, 166, 13, 12,
+                     'stashRevard.png',
+                     Action.STASH_REWARD),
+
     Button().setData(127, 375, 68, 28,
                      'mainBattle.png',
                      Action.MAIN_BATTLE),
@@ -70,6 +74,26 @@ BUTTONS320x480EN = [
     Button().setData(134, 294, 57, 21,
                      'retryConnection.png',
                      Action.RETRY_CONNECTION),
+
+    Button().setData(118, 296, 82, 28,
+                     'revardCollect.png',
+                     Action.REVARD_COLLECT),
+
+    Button().setData(251, 124, 14, 14,
+                     'adsClose1.png',
+                     Action.ADS_CLOSE1),
+
+    Button().setData(73, 212, 8, 8,
+                     'honorHunting.png',
+                     Action.HONOR_HUNTING),
+
+    Button().setData(170, 396, 74, 22,
+                     'honorChallenge1.png',
+                     Action.HONOR_CHALLENGE1),
+
+    Button().setData(138, 342, 46, 22,
+                     'honorNext1.png',
+                     Action.HONOR_NEXT1),
 ]
 
 
@@ -77,4 +101,4 @@ def LoadButtons():
     for button in BUTTONS320x480EN:
         button.img = Image.open(os.path.join(BUTTONS320x480EN_PATH,
                                              button.imgfile))
-    return BUTTONS320x480EN
+    return sorted(BUTTONS320x480EN, key=lambda x: x.action)

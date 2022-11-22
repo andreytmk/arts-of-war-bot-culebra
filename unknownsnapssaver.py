@@ -13,7 +13,7 @@ SCRIPT_PATH = os.path.dirname(os.path.realpath(__file__))
 
 class UnknownSnapsSaver:
     SNAPS_MIN_TIMEDELTA = timedelta(minutes=5)
-    MAX_UNKNOWN_SNAPS_COUNT = 6
+    MAX_UNKNOWN_SNAPS_COUNT = 3
 
     def __init__(self) -> None:
         self.unknownSnapsCount = 0
@@ -43,3 +43,7 @@ class UnknownSnapsSaver:
 
     def ResetLastUnknownSnapDT(self):
         self.lastUnknownSnapDT = datetime.utcnow()
+
+    def IsUnknownLimitReached(self):
+        return (self.unknownSnapsCount >=
+                UnknownSnapsSaver.MAX_UNKNOWN_SNAPS_COUNT)
