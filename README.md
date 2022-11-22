@@ -1,5 +1,7 @@
 # Art Of Wars game bot
 
+![Build status](https://github.com/andreytmk/arts-of-war-bot-culebra/actions/workflows/python-package.yml/badge.svg)
+
 This bot demonstrates how you can use the [Culebra](https://github.com/dtmilano/AndroidViewClient) to emulate user actions.
 
 ![Art Of Wars game bot emulator](docs/emulator-bot.png)
