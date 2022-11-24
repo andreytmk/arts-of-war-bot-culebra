@@ -80,6 +80,15 @@ ARENA_ACTIONS = [
     Action.ARENA_DEFEAT_NEXT,
 ]
 
+INFINIT_ACTIONS = [
+    Action.TERRITORY,
+    Action.HEADHUNT,
+    Action.INFINITY_ATTACK,
+    Action.FIGHT,
+    Action.INFINITY_MENU_ATTACK,
+    Action.INFINITY_NEXT,
+]
+
 # All time in UTC
 SCENARIO_BASE = [
     # Headhunt
@@ -97,8 +106,13 @@ SCENARIO_BASE = [
                               time(hour=1, minute=00, second=00),
                               ARENA_ACTIONS),
 
-    # Levels
+    # Infinit war
     ScenarioActions().setData(time(hour=1, minute=3, second=00),
-                              time(hour=23, minute=55, second=00),
+                              time(hour=1, minute=23, second=00),
+                              INFINIT_ACTIONS),
+
+    # Levels
+    ScenarioActions().setData(time(hour=1, minute=25, second=00),
+                              time(hour=20, minute=55, second=00),
                               LEVELS_ACTIONS),
 ]
