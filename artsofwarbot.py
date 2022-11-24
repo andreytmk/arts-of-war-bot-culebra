@@ -3,6 +3,7 @@
 
 from com.dtmilano.android.adb.adbclient import AdbClient
 from com.dtmilano.android.viewclient import ViewClient
+from aofcounter import AofCounter
 from aofrestarter import AofRestarter
 
 from botbase import Button
@@ -69,7 +70,8 @@ def processLoopAction(
         device: AdbClient,
         buttons: Button,
         unknownSnapsSaver: UnknownSnapsSaver,
-        aofRestarter: AofRestarter
+        aofRestarter: AofRestarter,
+        aofCounter: AofCounter
         ) -> None:
 
     snap = device.takeSnapshot(reconnect=True)
@@ -94,6 +96,7 @@ def processLoopAction(
             if checkButton(snap, button):
                 processButtonClick(device, button)
                 unknownSnapsSaver.ResetLastUnknownSnapDT()
+                aofCounter.LogAction(button.action)
                 return
 
     for button in buttons:
@@ -101,6 +104,7 @@ def processLoopAction(
             if checkButton(snap, button):
                 processButtonClick(device, button)
                 unknownSnapsSaver.ResetLastUnknownSnapDT()
+                aofCounter.LogAction(button.action)
                 return
 
     unknownSnapsSaver.ProcessUnknownSnap(snap)
@@ -121,13 +125,22 @@ def runLoop(infinite: bool) -> None:
     buttons = LoadButtons()
     unknownSnapsSaver = UnknownSnapsSaver()
     aofRestarter = AofRestarter(device)
+    aofCounter = AofCounter(logging.getLogger())
 
     if infinite:
         while True:
-            processLoopAction(device, buttons, unknownSnapsSaver, aofRestarter)
+            processLoopAction(device,
+                              buttons,
+                              unknownSnapsSaver,
+                              aofRestarter,
+                              aofCounter)
             time.sleep(LOOP_SECONDS)
     else:
-        processLoopAction(device, buttons, unknownSnapsSaver, aofRestarter)
+        processLoopAction(device,
+                          buttons,
+                          unknownSnapsSaver,
+                          aofRestarter,
+                          aofCounter)
 
 
 def printHelp() -> None:

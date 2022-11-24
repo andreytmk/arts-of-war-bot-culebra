@@ -94,6 +94,34 @@ BUTTONS320x480EN = [
     Button().setData(138, 342, 46, 22,
                      'honorNext1.png',
                      Action.HONOR_NEXT1),
+
+    Button().setData(260, 85, 14, 14,
+                     'adsClose2.png',
+                     Action.ADS_CLOSE2),
+
+    Button().setData(256, 467, 28, 11,
+                     'arena.png',
+                     Action.ARENA),
+
+    Button().setData(121, 406, 76, 22,
+                     'arenaChallenge.png',
+                     Action.ARENA_CHALLENGE),
+
+    Button().setData(207, 330, 52, 16,
+                     'arenaSelect.png',
+                     Action.ARENA_SELECT),
+
+    Button().setData(136, 342, 50, 23,
+                     'arenaVictoryNext.png',
+                     Action.ARENA_VICTORY_NEXT),
+
+    Button().setData(139, 345, 43, 22,
+                     'arenaDefeatNext.png',
+                     Action.ARENA_DEFEAT_NEXT),
+
+    Button().setData(137, 363, 48, 21,
+                     'congratClose.png',
+                     Action.CONGRAT_CLOSE),
 ]
 
 

@@ -28,12 +28,21 @@ class Action:
     HONOR_HUNTING = 180
     HONOR_CHALLENGE1 = 190
     HONOR_NEXT1 = 200
+    ADS_CLOSE2 = 210
+    ARENA = 220
+    ARENA_CHALLENGE = 230
+    ARENA_SELECT = 240
+    ARENA_VICTORY_NEXT = 250
+    ARENA_DEFEAT_NEXT = 260
+    CONGRAT_CLOSE = 270
 
 
 COMMON_ACTIONS = [
     Action.CLOSE_GOOGLE_PLAY,
     Action.RETRY_CONNECTION,
     Action.ADS_CLOSE1,
+    Action.ADS_CLOSE2,
+    Action.CONGRAT_CLOSE,
 ]
 
 LEVELS_ACTIONS = [
@@ -62,6 +71,15 @@ HONOR_ACTIONS = [
     Action.HONOR_NEXT1,
 ]
 
+ARENA_ACTIONS = [
+    Action.ARENA,
+    Action.ARENA_CHALLENGE,
+    Action.ARENA_SELECT,
+    Action.FIGHT,
+    Action.ARENA_VICTORY_NEXT,
+    Action.ARENA_DEFEAT_NEXT,
+]
+
 # All time in UTC
 SCENARIO_BASE = [
     # Headhunt
@@ -74,8 +92,13 @@ SCENARIO_BASE = [
                               time(hour=00, minute=40, second=00),
                               HONOR_ACTIONS),
 
+    # Arena
+    ScenarioActions().setData(time(hour=00, minute=42, second=00),
+                              time(hour=1, minute=00, second=00),
+                              ARENA_ACTIONS),
+
     # Levels
-    ScenarioActions().setData(time(hour=00, minute=45, second=00),
-                              time(hour=20, minute=55, second=00),
+    ScenarioActions().setData(time(hour=1, minute=3, second=00),
+                              time(hour=23, minute=55, second=00),
                               LEVELS_ACTIONS),
 ]

@@ -22,25 +22,29 @@ def processCheck(samplesnap: str, actions: list[Action]):
 def test_mainScreen1() -> None:
     processCheck('mainScreen1.png', [Action.MAIN_BATTLE,
                                      Action.TERRITORY,
-                                     Action.STASH_REWARD])
+                                     Action.STASH_REWARD,
+                                     Action.ARENA])
 
 
 def test_mainScreen2() -> None:
     processCheck('mainScreen2.png', [Action.MAIN_BATTLE,
                                      Action.TERRITORY,
-                                     Action.STASH_REWARD])
+                                     Action.STASH_REWARD,
+                                     Action.ARENA])
 
 
 def test_mainScreen3() -> None:
     processCheck('mainScreen3.png', [Action.MAIN_BATTLE,
                                      Action.TERRITORY,
-                                     Action.STASH_REWARD])
+                                     Action.STASH_REWARD,
+                                     Action.ARENA])
 
 
 def test_mainScreen4() -> None:
     processCheck('mainScreen4.png', [Action.MAIN_BATTLE,
                                      Action.TERRITORY,
-                                     Action.STASH_REWARD])
+                                     Action.STASH_REWARD,
+                                     Action.ARENA])
 
 
 def test_googlePlay1() -> None:
@@ -69,17 +73,20 @@ def test_defeatLevel1() -> None:
 
 def test_territoryScreen1() -> None:
     processCheck('territoryScreen1.png', [Action.HEADHUNT,
-                                          Action.HONOR_HUNTING])
+                                          Action.HONOR_HUNTING,
+                                          Action.ARENA])
 
 
 def test_territoryScreen2() -> None:
     processCheck('territoryScreen2.png', [Action.HEADHUNT,
-                                          Action.HONOR_HUNTING])
+                                          Action.HONOR_HUNTING,
+                                          Action.ARENA])
 
 
 def test_territoryScreen3() -> None:
     processCheck('territoryScreen3.png', [Action.HEADHUNT,
-                                          Action.HONOR_HUNTING])
+                                          Action.HONOR_HUNTING,
+                                          Action.ARENA])
 
 
 def test_headhuntScreen1() -> None:
@@ -153,4 +160,34 @@ def test_honorIceDragonFight1() -> None:
 
 
 def test_honorIceDragonComplete1() -> None:
-    processCheck('honorIceDragonComplete1.png', [Action.HONOR_NEXT1])
+    processCheck('honorIceDragonComplete1.png', [Action.HONOR_NEXT1,
+                                                 Action.ARENA_VICTORY_NEXT])
+
+
+def test_adsScreen3() -> None:
+    processCheck('adsScreen3.png', [Action.ADS_CLOSE2])
+
+
+def test_arenaMain1() -> None:
+    processCheck('arenaMain1.png', [Action.ARENA_CHALLENGE])
+
+
+def test_arenaSelect1() -> None:
+    processCheck('arenaSelect1.png', [Action.ARENA_SELECT])
+
+
+def test_arenaFight1() -> None:
+    processCheck('arenaFight1.png', [Action.FIGHT])
+
+
+def test_arenaVictory1() -> None:
+    processCheck('arenaVictory1.png', [Action.ARENA_VICTORY_NEXT,
+                                       Action.HONOR_NEXT1])
+
+
+def test_arenaDefeat1() -> None:
+    processCheck('arenaDefeat1.png', [Action.ARENA_DEFEAT_NEXT])
+
+
+def test_congrat1() -> None:
+    processCheck('congrat1.png', [Action.CONGRAT_CLOSE])
