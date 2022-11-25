@@ -35,6 +35,14 @@ class Action:
     ARENA_VICTORY_NEXT = 250
     ARENA_DEFEAT_NEXT = 260
     CONGRAT_CLOSE = 270
+    HEROTRIAL = 280
+    HEROTRIAL_GO = 290
+    HEROTRIAL_CHALLENGE = 300
+    HEROTRIAL_SELECT = 310
+    HEROTRIAL_FIGHT = 320
+    HEROTRIAL_VICTORY_NEXT = 330
+    HEROTRIAL_DEFEAT_NEXT = 340
+    PLAYERSCREEN_CLOSE = 350
 
 
 COMMON_ACTIONS = [
@@ -43,6 +51,7 @@ COMMON_ACTIONS = [
     Action.ADS_CLOSE1,
     Action.ADS_CLOSE2,
     Action.CONGRAT_CLOSE,
+    Action.PLAYERSCREEN_CLOSE,
 ]
 
 LEVELS_ACTIONS = [
@@ -89,6 +98,17 @@ INFINIT_ACTIONS = [
     Action.INFINITY_NEXT,
 ]
 
+HEROTRIAL_ACTIONS = [
+    Action.TERRITORY,
+    Action.HEROTRIAL,
+    Action.HEROTRIAL_GO,
+    Action.HEROTRIAL_CHALLENGE,
+    Action.HEROTRIAL_SELECT,
+    Action.HEROTRIAL_FIGHT,
+    Action.HEROTRIAL_VICTORY_NEXT,
+    Action.HEROTRIAL_DEFEAT_NEXT,
+]
+
 # All time in UTC
 SCENARIO_BASE = [
     # Headhunt
@@ -111,8 +131,13 @@ SCENARIO_BASE = [
                               time(hour=1, minute=23, second=00),
                               INFINIT_ACTIONS),
 
-    # Levels
+    # Hero Trial
     ScenarioActions().setData(time(hour=1, minute=25, second=00),
-                              time(hour=20, minute=55, second=00),
+                              time(hour=1, minute=55, second=00),
+                              HEROTRIAL_ACTIONS),
+
+    # Levels
+    ScenarioActions().setData(time(hour=2, minute=00, second=00),
+                              time(hour=23, minute=55, second=00),
                               LEVELS_ACTIONS),
 ]

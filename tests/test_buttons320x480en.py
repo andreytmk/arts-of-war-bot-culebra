@@ -74,19 +74,22 @@ def test_defeatLevel1() -> None:
 def test_territoryScreen1() -> None:
     processCheck('territoryScreen1.png', [Action.HEADHUNT,
                                           Action.HONOR_HUNTING,
-                                          Action.ARENA])
+                                          Action.ARENA,
+                                          Action.HEROTRIAL])
 
 
 def test_territoryScreen2() -> None:
     processCheck('territoryScreen2.png', [Action.HEADHUNT,
                                           Action.HONOR_HUNTING,
-                                          Action.ARENA])
+                                          Action.ARENA,
+                                          Action.HEROTRIAL])
 
 
 def test_territoryScreen3() -> None:
     processCheck('territoryScreen3.png', [Action.HEADHUNT,
                                           Action.HONOR_HUNTING,
-                                          Action.ARENA])
+                                          Action.ARENA,
+                                          Action.HEROTRIAL])
 
 
 def test_headhuntScreen1() -> None:
@@ -160,8 +163,10 @@ def test_honorIceDragonFight1() -> None:
 
 
 def test_honorIceDragonComplete1() -> None:
-    processCheck('honorIceDragonComplete1.png', [Action.HONOR_NEXT1,
-                                                 Action.ARENA_VICTORY_NEXT])
+    processCheck('honorIceDragonComplete1.png',
+                 [Action.HONOR_NEXT1,
+                  Action.ARENA_VICTORY_NEXT,
+                  Action.HEROTRIAL_VICTORY_NEXT])
 
 
 def test_adsScreen3() -> None:
@@ -182,12 +187,45 @@ def test_arenaFight1() -> None:
 
 def test_arenaVictory1() -> None:
     processCheck('arenaVictory1.png', [Action.ARENA_VICTORY_NEXT,
-                                       Action.HONOR_NEXT1])
+                                       Action.HONOR_NEXT1,
+                                       Action.HEROTRIAL_VICTORY_NEXT])
 
 
 def test_arenaDefeat1() -> None:
-    processCheck('arenaDefeat1.png', [Action.ARENA_DEFEAT_NEXT])
+    processCheck('arenaDefeat1.png', [Action.ARENA_DEFEAT_NEXT,
+                                      Action.HEROTRIAL_DEFEAT_NEXT])
 
 
 def test_congrat1() -> None:
     processCheck('congrat1.png', [Action.CONGRAT_CLOSE])
+
+
+def test_herotrialScreen1() -> None:
+    processCheck('herotrialScreen1.png', [Action.HEROTRIAL_GO])
+
+
+def test_herotrialMenu1() -> None:
+    processCheck('herotrialMenu1.png', [Action.HEROTRIAL_CHALLENGE])
+
+
+def test_herotrialSelect1() -> None:
+    processCheck('herotrialSelect1.png', [Action.HEROTRIAL_SELECT])
+
+
+def test_herotrialFight1() -> None:
+    processCheck('herotrialFight1.png', [Action.HEROTRIAL_FIGHT])
+
+
+def test_heroTrialVictory1() -> None:
+    processCheck('heroTrialVictory1.png', [Action.HEROTRIAL_VICTORY_NEXT,
+                                           Action.HONOR_NEXT1,
+                                           Action.ARENA_VICTORY_NEXT])
+
+
+def test_heroTrialDefeat1() -> None:
+    processCheck('heroTrialDefeat1.png', [Action.HEROTRIAL_DEFEAT_NEXT,
+                                          Action.ARENA_DEFEAT_NEXT])
+
+
+def test_playerScreen1() -> None:
+    processCheck('playerScreen1.png', [Action.PLAYERSCREEN_CLOSE])

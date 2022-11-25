@@ -122,6 +122,38 @@ BUTTONS320x480EN = [
     Button().setData(137, 363, 48, 21,
                      'congratClose.png',
                      Action.CONGRAT_CLOSE),
+
+    Button().setData(114, 329, 40, 9,
+                     'heroTrial.png',
+                     Action.HEROTRIAL),
+
+    Button().setData(220, 153, 40, 20,
+                     'heroTrialGo.png',
+                     Action.HEROTRIAL_GO),
+
+    Button().setData(123, 436, 73, 23,
+                     'heroTrialChallenge.png',
+                     Action.HEROTRIAL_CHALLENGE),
+
+    Button().setData(208, 333, 52, 15,
+                     'heroTrialSelect.png',
+                     Action.HEROTRIAL_SELECT),
+
+    Button().setData(115, 380, 86, 24,
+                     'heroTrialFight.png',
+                     Action.HEROTRIAL_FIGHT),
+
+    Button().setData(140, 342, 40, 22,
+                     'heroTrialVictoryNext.png',
+                     Action.HEROTRIAL_VICTORY_NEXT),
+
+    Button().setData(141, 345, 39, 22,
+                     'heroTrialDefeatNext.png',
+                     Action.HEROTRIAL_DEFEAT_NEXT),
+
+    Button().setData(264, 73, 13, 13,
+                     'playerScreenClose.png',
+                     Action.PLAYERSCREEN_CLOSE),
 ]
 
 

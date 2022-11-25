@@ -13,6 +13,7 @@ class AofCounter:
         self.passedHonor = 0
         self.passedArena = 0
         self.passedInfinity = 0
+        self.passedHeroTrial = 0
 
     def LogAction(self, action: Action) -> None:
         if action == Action.NEXT_LEVEL:
@@ -37,3 +38,7 @@ class AofCounter:
         elif action == Action.INFINITY_NEXT:
             self.passedInfinity += 1
             self.logger.info(f'passed {self.passedInfinity} infinity')
+        elif (action == Action.HEROTRIAL_DEFEAT_NEXT or
+              action == Action.HEROTRIAL_VICTORY_NEXT):
+            self.passedHeroTrial += 1
+            self.logger.info(f'passed {self.passedHeroTrial} heroTrial')
