@@ -154,6 +154,10 @@ BUTTONS320x480EN = [
     Button().setData(264, 73, 13, 13,
                      'playerScreenClose.png',
                      Action.PLAYERSCREEN_CLOSE),
+
+    Button().setData(41, 239, 134, 27,
+                     'closeApp.png',
+                     Action.CLOSE_APP),
 ]
 
 

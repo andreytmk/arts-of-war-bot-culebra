@@ -229,3 +229,7 @@ def test_heroTrialDefeat1() -> None:
 
 def test_playerScreen1() -> None:
     processCheck('playerScreen1.png', [Action.PLAYERSCREEN_CLOSE])
+
+
+def test_closeAppScreen1() -> None:
+    processCheck('closeAppScreen1.png', [Action.CLOSE_APP])
