@@ -35,7 +35,7 @@ logging.basicConfig(
     filename=os.path.join(SCRIPT_PATH, 'logs/artsofwarbot.log'),
     filemode='a',
     format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
-    datefmt='%H:%M:%S',
+    datefmt='%Y-%m-%d %H:%M:%S',
     level=logging.INFO)
 
 logging.info("Starting ARTS OF WAR bot")
@@ -80,8 +80,7 @@ def processLoopAction(
 
     availableActions = set()
     for scenarioAction in SCENARIO_BASE:
-        if (scenarioAction.fromTime <= currentTime
-                and currentTime <= scenarioAction.toTime):
+        if scenarioAction.IsActionTime(currentTime):
             for action in scenarioAction.actions:
                 availableActions.add(action)
 

@@ -233,3 +233,7 @@ def test_playerScreen1() -> None:
 
 def test_closeAppScreen1() -> None:
     processCheck('closeAppScreen1.png', [Action.CLOSE_APP])
+
+
+def test_pixelScreen1() -> None:
+    processCheck('pixelScreen1.png', [Action.PIXEL_CLOSE])

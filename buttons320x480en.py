@@ -158,6 +158,10 @@ BUTTONS320x480EN = [
     Button().setData(41, 239, 134, 27,
                      'closeApp.png',
                      Action.CLOSE_APP),
+
+    Button().setData(35, 247, 149, 30,
+                     'pixelClose.png',
+                     Action.PIXEL_CLOSE),
 ]
 
 

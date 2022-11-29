@@ -1,6 +1,9 @@
 #! /usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+from datetime import date, time, timedelta, datetime
+
+
 class Button:
     def __init__(self):
         self.x = None
@@ -32,13 +35,25 @@ class Button:
 
 
 class ScenarioActions:
-    def __init__(self):
-        self.fromTime = None
-        self.toTime = None
-        self.actions = None
+    TIME_SHIFT = timedelta(hours=0)
 
-    def setData(self, fromTime, toTime, actions):
-        self.fromTime = fromTime
-        self.toTime = toTime
+    def __init__(self):
+        self.fromTime: time
+        self.toTime: time
+        self.actions: list[int]
+
+    def setData(self, fromTime: time, toTime: time, actions: list[int]):
+        fromTimeShifted = (datetime.combine(date.today(), fromTime) +
+                           ScenarioActions.TIME_SHIFT)
+        self.fromTime = fromTimeShifted.time()
+
+        toTimeShifted = (datetime.combine(date.today(), toTime) +
+                         ScenarioActions.TIME_SHIFT)
+        self.toTime = toTimeShifted.time()
+
         self.actions = actions
         return self
+
+    def IsActionTime(self, currentDT: time):
+        return (self.fromTime <= currentDT and
+                currentDT <= self.toTime)
