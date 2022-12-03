@@ -237,3 +237,7 @@ def test_closeAppScreen1() -> None:
 
 def test_pixelScreen1() -> None:
     processCheck('pixelScreen1.png', [Action.PIXEL_CLOSE])
+
+
+def test_uiClose1() -> None:
+    processCheck('uiClose1.png', [Action.UI_CLOSE])

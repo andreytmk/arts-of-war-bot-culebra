@@ -45,6 +45,7 @@ class Action:
     PLAYERSCREEN_CLOSE = 350
     CLOSE_APP = 360
     PIXEL_CLOSE = 370
+    UI_CLOSE = 380
 
 
 COMMON_ACTIONS = [
@@ -56,6 +57,7 @@ COMMON_ACTIONS = [
     Action.PLAYERSCREEN_CLOSE,
     Action.CLOSE_APP,
     Action.PIXEL_CLOSE,
+    Action.UI_CLOSE,
 ]
 
 LEVELS_ACTIONS = [
@@ -127,21 +129,21 @@ SCENARIO_BASE = [
 
     # Arena
     ScenarioActions().setData(time(hour=00, minute=42, second=00),
-                              time(hour=1, minute=00, second=00),
+                              time(hour=1, minute=30, second=00),
                               ARENA_ACTIONS),
 
     # Infinit war
-    ScenarioActions().setData(time(hour=1, minute=3, second=00),
-                              time(hour=1, minute=23, second=00),
+    ScenarioActions().setData(time(hour=1, minute=33, second=00),
+                              time(hour=1, minute=53, second=00),
                               INFINIT_ACTIONS),
 
     # Hero Trial
-    ScenarioActions().setData(time(hour=1, minute=25, second=00),
-                              time(hour=1, minute=55, second=00),
+    ScenarioActions().setData(time(hour=2, minute=00, second=00),
+                              time(hour=2, minute=30, second=00),
                               HEROTRIAL_ACTIONS),
 
     # Levels
-    ScenarioActions().setData(time(hour=2, minute=00, second=00),
+    ScenarioActions().setData(time(hour=2, minute=35, second=00),
                               time(hour=23, minute=55, second=00),
                               LEVELS_ACTIONS),
 ]

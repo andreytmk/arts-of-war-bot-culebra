@@ -162,6 +162,10 @@ BUTTONS320x480EN = [
     Button().setData(35, 247, 149, 30,
                      'pixelClose.png',
                      Action.PIXEL_CLOSE),
+
+    Button().setData(37, 236, 141, 33,
+                     'uiClose.png',
+                     Action.UI_CLOSE),
 ]
 
 
